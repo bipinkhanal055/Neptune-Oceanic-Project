@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOme Page </title>
+    <link rel="stylesheet" href="./assets/css/swiper.min.css" />
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body style=" ">
+
+
+
+
+
+
+
+
+
+
+    <section class="homepage-banner-section" id="homepageBannerSection">
+
+        <div class="homepage-banner-video-wrap">
+            <video class="homepage-banner-video" id="homepageBannerVideo" autoplay loop muted playsinline
+                poster="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1600&auto=format&fit=crop">
+                <source src="media/NEPTUNE LIFESTYLE SHORTER.mp4" type="video/mp4">
+            </video>
+            <div class="homepage-banner-overlay"></div>
+        </div>
+
+        <div class="homepage-banner-inner">
+
+
+            <div class="homepage-banner-content">
+
+                <div class="homepage-banner-bottom-row">
+
+                    <div class="swiper homepage-banner-swiper">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide homepage-banner-slide">
+                                <div class="homepage-banner-slide-textblock">
+                                    <h1 class="homepage-banner-slide-title">Yacht Ownership.<br>Simplified.</h1>
+                                    <a href="#" class="homepage-banner-slide-discover">Discover More</a>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide homepage-banner-slide">
+                                <div class="homepage-banner-slide-textblock">
+                                    <h1 class="homepage-banner-slide-title">Fractional Ownership.<br>Made Easy.</h1>
+                                    <a href="#" class="homepage-banner-slide-discover">Discover More</a>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide homepage-banner-slide">
+                                <div class="homepage-banner-slide-textblock">
+                                    <h1 class="homepage-banner-slide-title">Curated Locations.<br>Worldwide.</h1>
+                                    <a href="#" class="homepage-banner-slide-discover">Discover More</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="homepage-banner-sidebar" id="homepageBannerSidebar">
+                        <div class="homepage-banner-sidebar-dash is-active"></div>
+                        <div class="homepage-banner-sidebar-dash"></div>
+                        <div class="homepage-banner-sidebar-dash"></div>
+                    </div>
+
+                </div>
+
+                <div class="homepage-mobile-topbar" id="homepageMobileTopbar">
+                    <div class="homepage-mobile-topbar-logo">
+                        <img src="logo.png" alt="Neptune Oceanic">
+                    </div>
+                    <div class="homepage-banner-mobile-play" id="homepageMobilePlay">
+                        <button class="homepage-banner-mobile-play-btn" id="homepageMobilePlayBtn"
+                            aria-label="Play video">
+                            <svg viewBox="0 0 24 24" fill="white">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </button>
+                        <span class="homepage-banner-mobile-play-label">Watch Video</span>
+                    </div>
+                </div>
+
+                <div class="homepage-banner-sidebar-mobile" id="homepageBannerSidebarMobile">
+                    <div class="homepage-banner-sidebar-mobile-dash is-active"></div>
+                    <div class="homepage-banner-sidebar-mobile-dash"></div>
+                    <div class="homepage-banner-sidebar-mobile-dash"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script>
+        (function () {
+            var sidebarDashes = document.querySelectorAll('#homepageBannerSidebar .homepage-banner-sidebar-dash');
+            var sidebarDashesMobile = document.querySelectorAll('#homepageBannerSidebarMobile .homepage-banner-sidebar-mobile-dash');
+
+            var homepageBannerSwiper = new Swiper('.homepage-banner-swiper', {
+                slidesPerView: 1,
+                loop: true,
+                speed: 1400,
+                simulateTouch: true,
+                grabCursor: true,
+                resistanceRatio: 0.85,
+                followFinger: true,
+                on: {
+                    slideChange: function (sw) {
+                        var realIndex = sw.realIndex;
+                        sidebarDashes.forEach(function (dash, i) {
+                            dash.classList.toggle('is-active', i === realIndex);
+                        });
+                        sidebarDashesMobile.forEach(function (dash, i) {
+                            dash.classList.toggle('is-active', i === realIndex);
+                        });
+                    }
+                }
+            });
+
+            // Mobile: play video only on tap
+            var video = document.getElementById('homepageBannerVideo');
+            var mobilePlayWrap = document.getElementById('homepageMobilePlay');
+            var mobilePlayBtn = document.getElementById('homepageMobilePlayBtn');
+
+            function isMobile() {
+                return window.matchMedia('(max-width: 640px)').matches;
+            }
+
+            if (isMobile()) {
+                video.autoplay = false;
+                video.pause();
+            }
+
+            mobilePlayBtn.addEventListener('click', function () {
+                video.play();
+                mobilePlayWrap.style.visibility = 'hidden';
+            });
+
+            window.addEventListener('resize', function () {
+                if (!isMobile()) {
+                    mobilePlayWrap.style.visibility = '';
+                    video.play();
+                }
+            });
+        })();
+    </script>
+
+
+
+
+
+    <!-- lower herobanner section start form here  -->
+
+
+    <section class="yofb-section">
+
+        <div class="yofb-accordion-item" data-index="0">
+
+            <div class="yofb-topbar-col yofb-col-active">
+                <p class="yofb-col-label">Yacht Operational<br>Fees Benchmark</p>
+            </div>
+
+            <div class="yofb-lower yofb-panel yofb-panel-active">
+                <div class="yofb-img-wrap">
+                    <img src="media/89fd9ee81becda0657b2834013defb2c4dbee719.jpg" alt="Yacht team">
+                </div>
+                <div class="yofb-content">
+                    <p class="yofb-sublabel">How Yacht Share Works</p>
+                    <div class="yofb-divider"></div>
+                    <div class="yofb-title-block">
+                        <h2 class="yofb-title">Yacht Operational Fees Benchmark.</h2>
+                    </div>
+                    <div class="yofb-text-block">
+                        <p>Owning a yacht share with Neptune Oceanic gives you all the luxury, freedom, and prestige of
+                            full yacht ownership, without the hassle or full financial commitment.</p>
+                        <p>Our operational fees are aligned with international yacht management standards, set at 10% of
+                            the vessel's new value. This ensures optimal performance, reliability, and long-term asset
+                            value, so your yacht remains pristine and ready for every voyage.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ACCORDION ITEM 1 -->
+        <div class="yofb-accordion-item" data-index="1">
+
+            <div class="yofb-topbar-col">
+                <p class="yofb-col-label">Shared<br>Ownership</p>
+            </div>
+
+            <div class="yofb-lower yofb-panel">
+                <div class="yofb-img-wrap">
+                    <img src="media/89fd9ee81becda0657b2834013defb2c4dbee719.jpg" alt="Shared Ownership">
+                </div>
+                <div class="yofb-content">
+                    <p class="yofb-sublabel">How Yacht Share Works</p>
+                    <div class="yofb-divider"></div>
+                    <div class="yofb-title-block">
+                        <h2 class="yofb-title">Shared Ownership.</h2>
+                    </div>
+                    <div class="yofb-text-block">
+                        <p>Share the cost, share the experience. Our shared ownership model lets you enjoy all the
+                            privileges of yacht ownership at a fraction of the price.</p>
+                        <p>Each share gives you proportional access to the vessel, fully maintained and crewed, ready
+                            when you need it.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ACCORDION ITEM 2 -->
+        <div class="yofb-accordion-item" data-index="2">
+
+            <div class="yofb-topbar-col">
+                <p class="yofb-col-label">Guaranteed<br>Access</p>
+            </div>
+
+            <div class="yofb-lower yofb-panel">
+                <div class="yofb-img-wrap">
+                    <img src="media/89fd9ee81becda0657b2834013defb2c4dbee719.jpg" alt="Guaranteed Access">
+                </div>
+                <div class="yofb-content">
+                    <p class="yofb-sublabel">How Yacht Share Works</p>
+                    <div class="yofb-divider"></div>
+                    <div class="yofb-title-block">
+                        <h2 class="yofb-title">Guaranteed Access.</h2>
+                    </div>
+                    <div class="yofb-text-block">
+                        <p>Your time on the water is guaranteed. Neptune Oceanic's booking system ensures you get your
+                            allocated days without hassle or conflict.</p>
+                        <p>Priority scheduling, flexible planning, and a dedicated concierge team means your voyage
+                            begins long before you step on board.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ACCORDION ITEM 3 -->
+        <div class="yofb-accordion-item" data-index="3">
+
+            <div class="yofb-topbar-col">
+                <p class="yofb-col-label">Professional<br>Management</p>
+            </div>
+
+            <div class="yofb-lower yofb-panel">
+                <div class="yofb-img-wrap">
+                    <img src="media/89fd9ee81becda0657b2834013defb2c4dbee719.jpg" alt="Professional Management">
+                </div>
+                <div class="yofb-content">
+                    <p class="yofb-sublabel">How Yacht Share Works</p>
+                    <div class="yofb-divider"></div>
+                    <div class="yofb-title-block">
+                        <h2 class="yofb-title">Professional Management.</h2>
+                    </div>
+                    <div class="yofb-text-block">
+                        <p>Every aspect of your yacht is handled by industry professionals. From maintenance and crew
+                            management to compliance and insurance — we take care of it all.</p>
+                        <p>You simply enjoy the experience. Neptune Oceanic manages everything else to the highest
+                            maritime standards.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+        (function () {
+            const section = document.querySelector('.yofb-section');
+            const items = Array.from(section.querySelectorAll('.yofb-accordion-item'));
+
+            function isMobile() {
+                return window.innerWidth < 768;
+            }
+
+            function activate(index) {
+                items.forEach((item, i) => {
+                    const tab = item.querySelector('.yofb-topbar-col');
+                    const panel = item.querySelector('.yofb-panel');
+                    const isActive = i === index;
+                    tab.classList.toggle('yofb-col-active', isActive);
+                    panel.classList.toggle('yofb-panel-active', isActive);
+                });
+            }
+
+            items.forEach((item, i) => {
+                item.querySelector('.yofb-topbar-col').addEventListener('click', () => activate(i));
+            });
+
+            // Init: item 0 active
+            activate(0);
+        })();
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- coll section start for here  -->
+
+
+
+
+
+    <section class="coll-section">
+
+        <img class="coll-bg" src="media/69cd26700419039a09f54e9e89d9b105ff1b79ff.png" alt="" aria-hidden="true">
+        <div class="coll-overlay"></div>
+
+        <div class="coll-inner">
+
+            <div class="coll-tabs">
+                <button class="coll-tab coll-tab-active" data-coll-tab="gold-coast">Gold Coast</button>
+                <button class="coll-tab" data-coll-tab="whitsundays">Whitsundays</button>
+                <button class="coll-tab" data-coll-tab="sydney">Sydney</button>
+                <button class="coll-tab" data-coll-tab="auckland">Auckland, NZ</button>
+            </div>
+
+            <div class="coll-text">
+                <h2 class="coll-location-title" id="collLocationTitle">Gold Coast</h2>
+                <p class="coll-location-desc" id="collLocationDesc">Based at premium marinas including Marina Mirage and
+                    Sanctuary Cove, Neptune Oceanic offers effortless access to the local Gold Coast Waterways, Moreton
+                    Bay to the north and the open ocean via the Gold Coast Seaway.</p>
+            </div>
+
+            <div class="coll-swiper-clip">
+                <div class="swiper coll-swiper" id="collSwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="coll-card">
+                                <img src="media/64834fafc0ecee6f5ee632890ddcea7fabdcc48f.png"
+                                    alt="2025 Riviera 445 SUV Platinum">
+                                <div class="coll-card-overlay"></div>
+                                <div class="coll-card-body">
+                                    <div class="coll-card-tags">
+                                        <span class="coll-card-tag">Gold Coast</span>
+                                        <span class="coll-card-tag">Whitsundays</span>
+                                    </div>
+                                    <h3 class="coll-card-title">2025 Riviera 445 SUV<br>Platinum</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="coll-card">
+                                <img src="media/3723bc3425fa2798513226a6396a979cbd1ceca6.png" alt="Yacht 2">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="coll-card">
+                                <img src="media/d0c4ea11aeaa9343d8ee8a382ba3a1c1fc05d077.png" alt="Yacht 3">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="coll-card">
+                                <img src="media/c396cc5e54cb0d0a2cbd4b087af22392316b865a.png" alt="Yacht 4">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="coll-card">
+                                <img src="media/bc3b174269e231b567f57bf7ea2ee6c7be364565.png" alt="Yacht 5">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="coll-card">
+                                <img src="media/0f3958e2717ff610d3d147cc31f26a1b094c4391.png" alt="Yacht 6">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="coll-nav">
+                <button class="coll-btn-prev" id="collBtnPrev" aria-label="Previous">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                </button>
+                <button class="coll-btn-next" id="collBtnNext" aria-label="Next">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        (function () {
+
+            var locations = {
+                'gold-coast': {
+                    title: 'Gold Coast',
+                    desc: 'Based at premium marinas including Marina Mirage and Sanctuary Cove, Neptune Oceanic offers effortless access to the local Gold Coast Waterways, Moreton Bay to the north and the open ocean via the Gold Coast Seaway.'
+                },
+                'whitsundays': {
+                    title: 'Whitsundays',
+                    desc: 'Explore the iconic Whitsunday Islands from our premium marina berths. With 74 islands and some of the world\'s most spectacular sailing waters, the Whitsundays deliver an unrivalled ocean experience for Neptune Oceanic owners.'
+                },
+                'sydney': {
+                    title: 'Sydney',
+                    desc: 'Sydney Harbour is one of the world\'s most beautiful waterways. Neptune Oceanic owners enjoy access to sheltered bays, ocean beaches and iconic landmarks from our Sydney marina locations.'
+                },
+                'auckland': {
+                    title: 'Auckland, NZ',
+                    desc: 'Known as the City of Sails, Auckland offers world-class sailing on the Hauraki Gulf. Our Auckland base puts you minutes from stunning anchorages, island getaways and open ocean passages.'
+                }
+            };
+
+            var tabs = document.querySelectorAll('.coll-tab');
+            var titleEl = document.getElementById('collLocationTitle');
+            var descEl = document.getElementById('collLocationDesc');
+
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    tabs.forEach(function (t) { t.classList.remove('coll-tab-active'); });
+                    tab.classList.add('coll-tab-active');
+
+                    var key = tab.getAttribute('data-coll-tab');
+                    var data = locations[key];
+                    if (data) {
+                        titleEl.textContent = data.title;
+                        descEl.textContent = data.desc;
+                    }
+                    collSwiper.slideTo(0);
+                });
+            });
+
+            var collSwiper = new Swiper('#collSwiper', {
+                slidesPerView: 'auto',
+                spaceBetween: 16,
+                grabCursor: true,
+                loop: false,
+                navigation: {
+                    prevEl: '#collBtnPrev',
+                    nextEl: '#collBtnNext',
+                },
+                breakpoints: {
+                    0: { spaceBetween: 12 },
+                    480: { spaceBetween: 14 },
+                    768: { spaceBetween: 16 },
+                    1024: { spaceBetween: 16 }
+                }
+            });
+
+        })();
+    </script>
+
+
+
+
+    <!-- details section  strat form here  -->
+
+
+
+
+
+
+
+    <section class="yc-section">
+        <div class="om">
+            <div class="yc-inner">
+
+            <!-- HEADER -->
+            <div class="yc-header">
+                <div class="yc-eyebrow">OUR YACHTS</div>
+                <div class="yc-hr"></div>
+                <div class="yc-header-row">
+                    <h2 class="yc-title">Find The Perfect<br />Yacht Share For You</h2>
+                    <button class="yc-btn" type="button">View All</button>
+                </div>
+            </div>
+
+            <!-- SLIDER -->
+            <div class="yc-slider-wrap">
+                <div class="yc-swiper">
+                    <div class="swiper-wrapper">
+
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide yc-slide">
+                            <article class="yc-card yc-card--a">
+                                <img class="yc-card-img" src="media/fe9d81657400fec496e902590a59aba5bb034be9.jpg"
+                                    alt="2024 Riviera 6000 Sport Yacht Platinum" />
+                                <div class="yc-card-vignette"></div>
+                                <div class="yc-card-content">
+                                    <div class="yc-tags">
+                                        <span class="yc-tag">Gold Coast</span>
+                                        <span class="yc-tag">Whitsundays</span>
+                                    </div>
+                                    <h3 class="yc-card-title">2024 Riviera 6000<br />Sport Yacht Platinum</h3>
+                                    <div class="yc-card-divider"></div>
+                                    <div class="yc-card-price">$438,000 PER 1/8 SHARE</div>
+                                </div>
+                                <div class="yc-card-footer">
+                                    <button class="yc-card-btn" type="button">View Details</button>
+                                    <img class="yc-card-mark" src="media/image 1.png" alt="brand mark" />
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide yc-slide">
+                            <article class="yc-card yc-card--secondary">
+                                <img class="yc-card-img" src="media/e5688348eb2c7d0e51a343ce17a1698327818edc.jpg"
+                                    alt="2023 Sunseeker Predator 50" />
+                                <div class="yc-card-vignette"></div>
+                                <div class="yc-card-content">
+                                    <div class="yc-tags">
+                                        <span class="yc-tag">Gold Coast</span>
+                                    </div>
+                                    <h3 class="yc-card-title">2023 Sunseeker<br />Predator 50</h3>
+                                    <div class="yc-card-divider"></div>
+                                    <div class="yc-card-price">$312,000 PER 1/8 SHARE</div>
+                                </div>
+                                <div class="yc-card-footer">
+                                    <button class="yc-card-btn" type="button">View Details</button>
+                                    <img class="yc-card-mark" src="media/image 1.png" alt="brand mark" />
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide yc-slide">
+                            <article class="yc-card yc-card--secondary">
+                                <img class="yc-card-img" src="media/950b64f098f9bd50d261b8ac91e40dfba2c5d75b.jpg"
+                                    alt="2024 Beneteau Antares 11" />
+                                <div class="yc-card-vignette"></div>
+                                <div class="yc-card-content">
+                                    <div class="yc-tags">
+                                        <span class="yc-tag">Whitsundays</span>
+                                    </div>
+                                    <h3 class="yc-card-title">2024 Beneteau<br />Antares 11</h3>
+                                    <div class="yc-card-divider"></div>
+                                    <div class="yc-card-price">$268,000 PER 1/8 SHARE</div>
+                                </div>
+                                <div class="yc-card-footer">
+                                    <button class="yc-card-btn" type="button">View Details</button>
+                                    <img class="yc-card-mark" src="media/image 1.png" alt="brand mark" />
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="swiper-slide yc-slide">
+                            <article class="yc-card yc-card--secondary">
+                                <img class="yc-card-img" src="media/c396cc5e54cb0d0a2cbd4b087af22392316b865a.png"
+                                    alt="2022 Azimut Magellano 25M" />
+                                <div class="yc-card-vignette"></div>
+                                <div class="yc-card-content">
+                                    <div class="yc-tags">
+                                        <span class="yc-tag">Gold Coast</span>
+                                    </div>
+                                    <h3 class="yc-card-title">2022 Azimut<br />Magellano 25M</h3>
+                                    <div class="yc-card-divider"></div>
+                                    <div class="yc-card-price">$521,000 PER 1/8 SHARE</div>
+                                </div>
+                                <div class="yc-card-footer">
+                                    <button class="yc-card-btn" type="button">View Details</button>
+                                    <img class="yc-card-mark" src="media/image 1.png" alt="brand mark" />
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="swiper-slide yc-slide" style=" visibility: hidden;">
+                            <article class="yc-card yc-card--secondary">
+                                <img class="yc-card-img" src=" " alt=" " />
+                                <div class="yc-card-vignette"></div>
+                                <div class="yc-card-content">
+                                    <div class="yc-tags">
+                                        <span class="yc-tag">Whitsundays</span>
+                                    </div>
+                                    <h3 class="yc-card-title">2024 Riviera<br />4800 Sport Yacht</h3>
+                                    <div class="yc-card-divider"></div>
+                                    <div class="yc-card-price">$389,000 PER 1/8 SHARE</div>
+                                </div>
+                                <div class="yc-card-footer">
+                                    <button class="yc-card-btn" type="button">View Details</button>
+                                    <img class="yc-card-mark" src="media/image 1.png" alt="brand mark" />
+                                </div>
+                            </article>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="yc-nav-row">
+                    <div class="yc-pagination"></div>
+                    <div class="yc-arrows">
+                        <button class="yc-arrow yc-prev" type="button" aria-label="Previous yacht">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1.6"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button class="yc-arrow yc-next" type="button" aria-label="Next yacht">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1.6"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script>
+        const ycSlideCount = document.querySelectorAll('.yc-swiper .swiper-slide').length;
+        const ycPaginationEl = document.querySelector('.yc-pagination');
+
+        for (let i = 0; i < ycSlideCount; i++) {
+            const dash = document.createElement('span');
+            dash.className = 'yc-dash' + (i === 0 ? ' is-active' : '');
+            dash.setAttribute('data-index', i);
+            ycPaginationEl.appendChild(dash);
+        }
+
+        const ycSlideEls = document.querySelectorAll('.yc-swiper .swiper-slide');
+
+        function ycSetActiveSlide(activeIndex, swiperInstance) {
+            ycSlideEls.forEach((slide, i) => {
+                const wasActive = slide.classList.contains('yc-slide--active');
+                const isActive = i === activeIndex;
+                slide.classList.toggle('yc-slide--active', isActive);
+
+                if (swiperInstance && wasActive !== isActive) {
+                    const onDone = function (e) {
+                        if (e.propertyName !== 'width') return;
+                        slide.removeEventListener('transitionend', onDone);
+                        swiperInstance.update();
+                    };
+                    slide.addEventListener('transitionend', onDone);
+                }
+            });
+        }
+
+        const ycLastIndex = ycSlideEls.length - 1;
+
+        function ycUpdateArrowState(index) {
+            const prevBtn = document.querySelector('.yc-prev');
+            const nextBtn = document.querySelector('.yc-next');
+            prevBtn.classList.toggle('swiper-button-disabled', index === 0);
+            nextBtn.classList.toggle('swiper-button-disabled', index === ycLastIndex);
+        }
+
+        const ycSwiper = new Swiper('.yc-swiper', {
+            slidesPerView: 'auto',
+            spaceBetween: 24,
+            slidesOffsetAfter: 480,
+            speed: 500,
+            watchOverflow: true,
+            a11y: { enabled: true },
+            breakpoints: {
+                0: { spaceBetween: 16, slidesOffsetAfter: 0 },
+                721: { spaceBetween: 24, slidesOffsetAfter: 480 },
+            },
+            on: {
+                init: function (swiper) {
+                    ycSetActiveSlide(swiper.activeIndex, swiper);
+                    ycUpdateArrowState(swiper.activeIndex);
+                },
+                slideChange: function (swiper) {
+                    const dashes = document.querySelectorAll('.yc-pagination .yc-dash');
+                    dashes.forEach(d => d.classList.remove('is-active'));
+                    if (dashes[swiper.activeIndex]) {
+                        dashes[swiper.activeIndex].classList.add('is-active');
+                    }
+                    ycSetActiveSlide(swiper.activeIndex, swiper);
+                    ycUpdateArrowState(swiper.activeIndex);
+                }
+            }
+        });
+
+        function ycGoTo(index) {
+            const clamped = Math.max(0, Math.min(ycLastIndex, index));
+            ycSwiper.slideTo(clamped);
+        }
+
+        document.querySelector('.yc-prev').addEventListener('click', function () {
+            ycGoTo(ycSwiper.activeIndex - 1);
+        });
+        document.querySelector('.yc-next').addEventListener('click', function () {
+            ycGoTo(ycSwiper.activeIndex + 1);
+        });
+
+        ycSlideEls.forEach((slide, i) => {
+            slide.addEventListener('click', function (e) {
+                if (e.target.closest('.yc-card-btn')) return;
+                ycGoTo(i);
+            });
+        });
+
+        ycPaginationEl.addEventListener('click', function (e) {
+            const dash = e.target.closest('.yc-dash');
+            if (!dash) return;
+            const idx = parseInt(dash.getAttribute('data-index'), 10);
+            ycGoTo(idx);
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- yatch share finder   start form hrere   -->
+
+
+
+    <section class="ysf-section">
+        <div class="ysf-inner">
+
+            <div class="ysf-left">
+
+                <img class="ysf-left-bg" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=900&q=80"
+                    alt="" aria-hidden="true" />
+
+                <div class="ysf-left-overlay"></div>
+
+                <span class="ysf-ghost-num" aria-hidden="true">1</span>
+
+                <!-- Text content -->
+                <div class="ysf-left-content">
+                    <h2 class="ysf-title">YACHT SHARE FINDER</h2>
+                    <p class="ysf-body">Select a luxury yacht and ownership share that matches your lifestyle, cruising
+                        goals, preferred locations and annual time on water.</p>
+                    <a href="#" class="ysf-btn">YACHT SHARE FINDER</a>
+                </div>
+
+            </div>
+
+            <div class="ysf-right">
+                <video class="ysf-right-video" autoplay muted loop playsinline preload="metadata" tabindex="-1"
+                    aria-hidden="true">
+                    <source src="media/NEPTUNE LIFESTYLE SHORTER.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Curated Boating Experiences section start form here  -->
+
+    <section class="exp-section">
+
+         
+
+        <div class="exp-inner">
+
+            <h2 class="exp-title">Curated Boating Experiences</h2>
+
+            <div class="exp-timeline">
+
+                <div class="exp-hbranch exp-hbranch--1"></div>
+                <div class="exp-hbranch exp-hbranch--2"></div>
+                <div class="exp-hbranch exp-hbranch--3"></div>
+
+                <div class="exp-card exp-card--1">
+                    <video autoplay muted loop playsinline>
+                        <source src="media/NEPTUNE REEL 1.mp4" type="video/mp4">
+                    </video>
+                    <div class="exp-card-overlay"></div>
+                    <div class="exp-card-label">Coastal Day Escapes</div>
+                </div>
+
+                <div class="exp-card exp-card--2">
+                    <video autoplay muted loop playsinline>
+                        <source src="media/NEPTUNE REEL 2.mp4" type="video/mp4">
+                    </video>
+                    <div class="exp-card-overlay"></div>
+                    <div class="exp-card-label">Entertaining and Social Cruising</div>
+                </div>
+
+                <div class="exp-card exp-card--3">
+                    <video autoplay muted loop playsinline>
+                        <source src="media/Untitled design (5).mp4" type="video/mp4">
+                    </video>
+                    <div class="exp-card-overlay"></div>
+                    <div class="exp-card-label">Family Getaways</div>
+                </div>
+
+                <div class="exp-btn-wrap">
+                    <div class="exp-btn-ring">
+                        <a class="exp-btn" href="#">View All<br>Experiences</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- share story slide section start form here  -->
+
+
+    <section class="share-story-section">
+
+        <img class="share-story-bg-img" src="media/3f3ce27cfe64eb32d9e3413f00b9decf74d0ef8a.jpg" alt=""
+            aria-hidden="true">
+
+        <!-- HEADER — padded -->
+        <div class="share-story-header">
+            <h2 class="share-story-title">Yacht Share Stories</h2>
+            <a class="share-story-view-all" href="#">View All Stories</a>
+        </div>
+
+        <div class="share-story-swiper-outer">
+            <div class="swiper share-story-swiper" id="shareStorySwiper">
+                <div class="swiper-wrapper">
+
+                    <!-- Card 1 -->
+                    <div class="swiper-slide">
+                        <div class="share-story-card">
+                            <img src="media/59955e055f21323a1a6d2d8665ab70bd7bdd736d.jpg" alt="Yacht Share Story 1">
+                            <div class="share-story-card-gradient"></div>
+                            <div class="share-story-card-bottom">
+                                <div class="share-story-play">
+                                    <svg width="22" height="26" viewBox="0 0 22 26" fill="white">
+                                        <polygon points="0,0 22,13 0,26" />
+                                    </svg>
+                                </div>
+                                <span class="share-story-watch">Watch Video</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="swiper-slide">
+                        <div class="share-story-card">
+                            <img src="media/eb1cf89049f14d8a9c9bb54e5353e5696a78b407.jpg" alt="Yacht Share Story 2">
+                            <div class="share-story-card-gradient"></div>
+                            <div class="share-story-card-bottom">
+                                <div class="share-story-play">
+                                    <svg width="22" height="26" viewBox="0 0 22 26" fill="white">
+                                        <polygon points="0,0 22,13 0,26" />
+                                    </svg>
+                                </div>
+                                <span class="share-story-watch">Watch Video</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="swiper-slide">
+                        <div class="share-story-card">
+                            <img src="media/13108acd8aeb6e8f12c734b5b3cabccad5074f5d.jpg" alt="Yacht Share Story 3">
+                            <div class="share-story-card-gradient"></div>
+                            <div class="share-story-card-bottom">
+                                <div class="share-story-play">
+                                    <svg width="22" height="26" viewBox="0 0 22 26" fill="white">
+                                        <polygon points="0,0 22,13 0,26" />
+                                    </svg>
+                                </div>
+                                <span class="share-story-watch">Watch Video</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="swiper-slide">
+                        <div class="share-story-card">
+                            <img src="media/9deee5c3048f65d9c4fc01aebc5893b79f9db5fc.jpg " alt="Yacht Share Story 4">
+                            <div class="share-story-card-gradient"></div>
+                            <div class="share-story-card-bottom">
+                                <div class="share-story-play">
+                                    <svg width="22" height="26" viewBox="0 0 22 26" fill="white">
+                                        <polygon points="0,0 22,13 0,26" />
+                                    </svg>
+                                </div>
+                                <span class="share-story-watch">Watch Video</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="swiper-slide">
+                        <div class="share-story-card">
+                            <img src="media/9deee5c3048f65d9c4fc01aebc5893b79f9db5fc.jpg" alt="Yacht Share Story 5">
+                            <div class="share-story-card-gradient"></div>
+                            <div class="share-story-card-bottom">
+                                <div class="share-story-play">
+                                    <svg width="22" height="26" viewBox="0 0 22 26" fill="white">
+                                        <polygon points="0,0 22,13 0,26" />
+                                    </svg>
+                                </div>
+                                <span class="share-story-watch">Watch Video</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="swiper-slide">
+                        <div class="share-story-card">
+                            <img src="media/9deee5c3048f65d9c4fc01aebc5893b79f9db5fc.jpg" alt="Yacht Share Story 6">
+                            <div class="share-story-card-gradient"></div>
+                            <div class="share-story-card-bottom">
+                                <div class="share-story-play">
+                                    <svg width="22" height="26" viewBox="0 0 22 26" fill="white">
+                                        <polygon points="0,0 22,13 0,26" />
+                                    </svg>
+                                </div>
+                                <span class="share-story-watch">Watch Video</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom pagination dots — mobile only -->
+        <div class="share-story-pagination" id="shareStoryPagination"></div>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        (function () {
+            var totalSlides = 6;
+            var paginationEl = document.getElementById('shareStoryPagination');
+            var dots = [];
+
+            for (var i = 0; i < totalSlides; i++) {
+                var dot = document.createElement('div');
+                dot.className = 'share-story-dot' + (i === 0 ? ' share-story-dot-active' : '');
+                paginationEl.appendChild(dot);
+                dots.push(dot);
+            }
+
+            function setActiveDot(index) {
+                dots.forEach(function (d, i) {
+                    d.classList.toggle('share-story-dot-active', i === index);
+                });
+            }
+
+            dots.forEach(function (dot, i) {
+                dot.addEventListener('click', function () { swiper.slideTo(i); });
+            });
+
+            var swiper = new Swiper('#shareStorySwiper', {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                grabCursor: true,
+                loop: false,
+                on: {
+                    slideChange: function () { setActiveDot(this.realIndex); }
+                },
+                breakpoints: {
+                    0: { spaceBetween: 16, centeredSlides: true },
+                    480: { spaceBetween: 16, centeredSlides: true },
+                    768: { spaceBetween: 18, centeredSlides: false },
+                    1024: { spaceBetween: 20, centeredSlides: false }
+                }
+            });
+        })();
+    </script>
+
+
+
+    <!-- 
+     FAQ SECTION
+ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+
+            <div class="faq-left">
+                <img class="faq-bg-img" src="media/faq-circle-lines.png" onerror="this.style.display='none'" alt=""
+                    aria-hidden="true">
+                <h2 class="faq-title">Frequently Asked<br>Questions</h2>
+            </div>
+
+            <!-- RIGHT: Accordion -->
+            <div class="faq-right">
+
+                <div class="faq-item faq-open">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="true">
+                        <p class="faq-question-text">How does yacht share ownership work?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Yacht share ownership allows you to enjoy the benefits of owning a luxury yacht without
+                                the full financial and operational burden. Instead of purchasing an entire vessel, you
+                                acquire a defined share, which gives you guaranteed access to the yacht for a set number
+                                of days or weeks each year.</p>
+                            <p>Neptune Oceanic structures each ownership group carefully, ensuring a limited number of
+                                owners per yacht. This means availability is reliable, scheduling is fair, and the yacht
+                                is never overused. Usage is managed through a transparent booking system that balances
+                                peak and off peak periods across all owners.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                        <p class="faq-question-text">How is booking time managed between owners?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Booking time is managed through our proprietary online scheduling platform. Each owner
+                                receives a fair allocation of peak and off-peak periods across the year, ensuring no
+                                single owner dominates prime dates. Advance booking windows, waitlists, and swap options
+                                are all available through your owner portal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                        <p class="faq-question-text">What costs are included in ownership?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Your annual ownership fee covers maintenance, insurance, berthing, cleaning, and routine
+                                servicing. We handle all the operational complexity so you simply arrive and enjoy. Any
+                                extraordinary repairs are shared equitably among the ownership group and communicated
+                                transparently.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                        <p class="faq-question-text">Where are the yachts located?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Neptune Oceanic yachts are currently based in the Whitsundays, Queensland — one of
+                                Australia's premier sailing destinations. We are expanding to additional locations and
+                                marina options. Contact us for the latest availability by region.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                        <p class="faq-question-text">Do I need boating experience to join?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>No prior boating experience is required. We offer fully crewed options for those who
+                                prefer a hands-off experience, as well as bareboat access for licensed skippers. Our
+                                team can also connect you with accredited training courses if you wish to develop your
+                                skills as part of the ownership experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            var items = document.querySelectorAll('.faq-item');
+
+            items.forEach(function (item) {
+                var trigger = item.querySelector('.faq-question');
+
+                function toggle() {
+                    var isOpen = item.classList.contains('faq-open');
+                    // Close all
+                    items.forEach(function (i) {
+                        i.classList.remove('faq-open');
+                        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    });
+                    if (!isOpen) {
+                        item.classList.add('faq-open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    }
+                }
+
+                trigger.addEventListener('click', toggle);
+                trigger.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+                });
+            });
+        })();
+    </script>
+
+
+
+
+
+    <!-- 
+     HPS — BOAT SLIDER SECTION 
+ -->
+    <section class="hps-section">
+
+        <button class="hps-btn-prev" id="hpsBtnPrev" aria-label="Previous">
+            <svg viewBox="0 0 24 24">
+                <polyline points="15 18 9 12 15 6" />
+            </svg>
+        </button>
+
+        <div class="swiper hps-swiper" id="hpsSwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="media/e3cfd4e134195ce6836f3749670f0a1f9737dccc.png" alt="Yacht 1">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="media/bc3b174269e231b567f57bf7ea2ee6c7be364565.png" alt="Yacht 2">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="media/0f3958e2717ff610d3d147cc31f26a1b094c4391.png" alt="Yacht 3">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=1400&q=85" alt="Yacht 4">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1400&q=85" alt="Yacht 5">
+                </div>
+
+            </div>
+        </div>
+
+        <button class="hps-btn-next" id="hpsBtnNext" aria-label="Next">
+            <svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+            </svg>
+        </button>
+
+    </section>
+
+    <div class="main-hpm-section">
+
+        <section class="hpm-section">
+            <div class="hpm-track" id="hpmTrack">
+
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!--  END HOMEPAGE SLIDER   MARQUEE  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        (function () {
+
+            var hpsSwiper = new Swiper('#hpsSwiper', {
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                spaceBetween: 20,
+                grabCursor: true,
+                loop: true,
+                speed: 600,
+                navigation: {
+                    prevEl: '#hpsBtnPrev',
+                    nextEl: '#hpsBtnNext',
+                },
+                breakpoints: {
+                    0: {
+                        spaceBetween: 12,
+                    },
+                    640: {
+                        spaceBetween: 18,
+                    },
+                    1024: {
+                        spaceBetween: 24,
+                    }
+                }
+            });
+
+        })();
+    </script>
+</body>
+
+</html>

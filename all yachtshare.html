@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yacht Share Fleet</title>
+<link rel="stylesheet" href="./assets/css/swiper.min.css" />
+ <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+
+<!-- 
+     SLIDE CONTENT  
+ -->
+<div class="ays-slides-data">
+ 
+  <div class="ays-slide-src"
+       data-slide="0"
+       data-bg="/media/49aaa863acea5cd1c181c7068ceb06ed6ed93b08.jpg">
+    <div data-f="title">ALL YACHT SHARES</div>
+    <div data-f="desc">Discover premium yacht shares in Australia with Neptune Oceanic, enjoy luxury co-ownership, expert vessel management and effortless access to stunning cruising grounds like the Gold Coast, Whitsundays and Sydney Harbour without the hassles of full ownership.</div>
+    <div data-f="tags">
+      <span class="ays-tag">Gold Coast</span>
+      <span class="ays-tag">Whitsundays</span>
+    </div>
+    <div data-f="yacht">2024 RIVIERA SPORT<br>YACHT PLATINUM</div>
+    <div data-f="link" data-href="#"></div>
+  </div>
+ 
+  <div class="ays-slide-src"
+       data-slide="1"
+       data-bg="/media/49aaa863acea5cd1c181c7068ceb06ed6ed93b08.jpg">
+    <div data-f="title">FEATURED SHARES</div>
+    <div data-f="desc">Explore our handpicked collection of fractional ownership opportunities across Australia's most sought-after coastal destinations, offering unparalleled luxury and professional vessel management for discerning co-owners.</div>
+    <div data-f="tags">
+      <span class="ays-tag">Sydney Harbour</span>
+      <span class="ays-tag">Pittwater</span>
+    </div>
+    <div data-f="yacht">2023 MARITIMO M600<br>OFFSHORE CRUISER</div>
+    <div data-f="link" data-href="#"></div>
+  </div>
+ 
+  <div class="ays-slide-src"
+       data-slide="2"
+       data-bg="/media/49aaa863acea5cd1c181c7068ceb06ed6ed93b08.jpg">
+    <div data-f="title">PREMIUM LOCATIONS</div>
+    <div data-f="desc">From the tropical paradise of the Whitsundays to the iconic waters of the Great Barrier Reef and vibrant Sydney Harbour — our portfolio places you at Australia's most breathtaking sailing destinations without the complexity of full ownership.</div>
+    <div data-f="tags">
+      <span class="ays-tag">Whitsundays</span>
+      <span class="ays-tag">Great Barrier Reef</span>
+    </div>
+    <div data-f="yacht">2024 SUNSEEKER<br>PREDATOR 65</div>
+    <div data-f="link" data-href="#"></div>
+  </div>
+ 
+</div>
+ 
+ 
+<!-- 
+     VISUAL SECTION
+ -->
+<section class="ays-section" id="aysSection">
+ 
+  <!-- Crossfade background layers -->
+  <div class="ays-bg ays-bg--a" id="aysBgA"></div>
+  <div class="ays-bg ays-bg--b" id="aysBgB"></div>
+  <div class="ays-overlay"></div>
+ 
+  <!-- Content inner -->
+  <div class="ays-inner" id="aysInner">
+ 
+    <div class="ays-top">
+      <h1 class="ays-title" id="aysTitle"></h1>
+      <p  class="ays-desc"  id="aysDesc"></p>
+    </div>
+ 
+    <div class="ays-bottom">
+      <div class="ays-tags"        id="aysTags"></div>
+      <h2  class="ays-yacht-name"  id="aysYachtName"></h2>
+      <div class="ays-actions">
+        <a   href="#" class="ays-view-btn" id="aysViewBtn">View Details</a>
+        <button class="ays-arrow-btn" id="aysPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <button class="ays-arrow-btn" id="aysNext" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+ 
+  </div>
+  
+  <div class="ays-sidebar" id="aysSidebar">
+    <div class="ays-sidebar-dash is-active" data-idx="0"></div>
+    <div class="ays-sidebar-dash"           data-idx="1"></div>
+    <div class="ays-sidebar-dash"           data-idx="2"></div>
+  </div>
+  
+  <div class="ays-yacht-finder-wrap">
+    <button class="ays-yacht-finder" aria-label="Yacht Finder">
+      <div class="ays-yacht-finder-inner"><span>Yacht<br>Finder</span></div>
+    </button>
+  </div>
+  
+  <div class="ays-mobile-finder-wrap">
+    <button class="ays-mobile-finder" aria-label="Yacht Finder">
+      <div class="ays-yacht-finder-inner"><span>Yacht<br>Finder</span></div>
+    </button>
+  </div>
+  
+  <div class="ays-mobile-dashes" id="aysMobileDashes">
+    <div class="ays-mobile-dash is-active" data-idx="0"></div>
+    <div class="ays-mobile-dash"           data-idx="1"></div>
+    <div class="ays-mobile-dash"           data-idx="2"></div>
+  </div>
+ 
+</section>
+ 
+ 
+<!-- 
+     SLIDER LOGIC ONLY — no content strings, all read from HTML above
+ -->
+<script>
+(function () {
+ 
+  /* ---- count slides from the HTML ---- */
+  var srcs   = document.querySelectorAll('.ays-slide-src');
+  var TOTAL  = srcs.length;
+ 
+  /* ---- DOM refs ---- */
+  var bgA      = document.getElementById('aysBgA');
+  var bgB      = document.getElementById('aysBgB');
+  var inner    = document.getElementById('aysInner');
+  var titleEl  = document.getElementById('aysTitle');
+  var descEl   = document.getElementById('aysDesc');
+  var tagsEl   = document.getElementById('aysTags');
+  var yachtEl  = document.getElementById('aysYachtName');
+  var viewBtn  = document.getElementById('aysViewBtn');
+  var prevBtn  = document.getElementById('aysPrev');
+  var nextBtn  = document.getElementById('aysNext');
+  var allDashes = document.querySelectorAll('[data-idx]');
+ 
+  var current   = 0;
+  var bgActive  = 'a';
+  var animating = false;
+ 
+  /* ---- Read one slide's data directly from the HTML source divs ---- */
+  function readSlide(i) {
+    var src = srcs[i];
+    return {
+      bg:       src.dataset.bg,
+      title:    src.querySelector('[data-f="title"]').innerHTML,
+      desc:     src.querySelector('[data-f="desc"]').innerHTML,
+      tagsHtml: src.querySelector('[data-f="tags"]').innerHTML,
+      yacht:    src.querySelector('[data-f="yacht"]').innerHTML,
+      link:     src.querySelector('[data-f="link"]').dataset.href
+    };
+  }
+ 
+  /* ---- Paint the display elements from a slide object ---- */
+  function paint(slide) {
+    titleEl.innerHTML  = slide.title;
+    descEl.innerHTML   = slide.desc;
+    tagsEl.innerHTML   = slide.tagsHtml;
+    yachtEl.innerHTML  = slide.yacht;
+    viewBtn.href       = slide.link;
+  }
+ 
+  /* ---- Crossfade the background ---- */
+  function swapBg(url) {
+    var incoming = bgActive === 'a' ? bgB : bgA;
+    var outgoing = bgActive === 'a' ? bgA : bgB;
+    incoming.style.backgroundImage = 'url(' + url + ')';
+    incoming.style.opacity = '0';
+    void incoming.offsetWidth;         /* force reflow */
+    incoming.style.opacity = '1';
+    outgoing.style.opacity = '0';
+    bgActive = bgActive === 'a' ? 'b' : 'a';
+  }
+ 
+  /* ---- Update active state on all dash elements ---- */
+  function syncDashes(i) {
+    allDashes.forEach(function (d) {
+      d.classList.toggle('is-active', parseInt(d.dataset.idx, 10) === i);
+    });
+  }
+ 
+  /* ---- Navigate to a slide index ---- */
+  function goTo(index) {
+    if (animating) return;
+    var next = ((index % TOTAL) + TOTAL) % TOTAL;
+    if (next === current) return;
+    animating = true;
+ 
+    /* fade content out */
+    inner.classList.add('is-fading');
+ 
+    /* crossfade background immediately */
+    swapBg(readSlide(next).bg);
+ 
+    /* after fade-out: update content, fade back in */
+    setTimeout(function () {
+      current = next;
+      paint(readSlide(current));
+      syncDashes(current);
+      inner.classList.remove('is-fading');
+      animating = false;
+    }, 240);
+  }
+ 
+  /* ---- Initialise with slide 0 ---- */
+  (function init() {
+    var s0 = readSlide(0);
+    bgA.style.backgroundImage = 'url(' + s0.bg + ')';
+    paint(s0);
+    syncDashes(0);
+ 
+    /* preload all backgrounds */
+    srcs.forEach(function (src) {
+      var img = new Image();
+      img.src = src.dataset.bg;
+    });
+  })();
+ 
+  /* ---- Arrow buttons ---- */
+  prevBtn.addEventListener('click', function () { goTo(current - 1); });
+  nextBtn.addEventListener('click', function () { goTo(current + 1); });
+ 
+  /* ---- Dash clicks (desktop sidebar + mobile dashes) ---- */
+  allDashes.forEach(function (d) {
+    d.addEventListener('click', function () {
+      goTo(parseInt(d.dataset.idx, 10));
+    });
+  });
+ 
+  /* ---- Swipe / pointer drag (mobile) ---- */
+  var startX = null;
+  var section = document.getElementById('aysSection');
+ 
+  section.addEventListener('pointerdown', function (e) { startX = e.clientX; });
+  section.addEventListener('pointerup',   function (e) {
+    if (startX === null) return;
+    var diff = startX - e.clientX;
+    if (Math.abs(diff) > 60) goTo(current + (diff > 0 ? 1 : -1));
+    startX = null;
+  });
+ 
+})();
+</script>
+  <!--  HERO / INTRO SECTION  -->
+  <section class="all-share-hero-section">
+    <img src="/media/contactbackground.png" alt="" class="all-share-bgmap">
+    <div class="all-share-wrapper">
+      <div class="all-share-hero-grid">
+
+        <div class="all-share-hero-image-wrap">
+          <img src="/media/34518321248973bce616e03ba1df6d7c89595cc8.jpg" alt="Yacht deck lounge area" class="all-share-hero-image">
+        </div>
+
+        <div class="all-share-hero-content">
+          <p class="all-share-eyebrow">Explore Our Yacht Share Fleet</p>
+          <hr class="all-share-rule">
+          <h1 class="all-share-title">Co-ownership made simple.</h1>
+          <div class="all-share-desc">
+            <p>Our current fleet spans a range of models and sizes, from versatile sport yachts to classic cruisers and even superyacht share opportunities.</p>
+            <p>Whether you're after effortless weekend escapes from the Gold Coast, extended Whitsundays adventures or something in between, there's a yacht share designed to match your lifestyle and boating ambitions.</p>
+          </div>
+          <a href="#" class="all-share-cta-btn">Yacht Share Finder</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!--  OUR YACHTS + FILTER SECTION  -->
+  <section class="all-share-yachts-section">
+    <div class="all-share-wrapper">
+      <h2 class="all-share-section-title">Our Yachts</h2>
+
+      <div class="all-share-filter-block">
+        <p class="all-share-location-label">Location</p>
+        <div class="all-share-category-row">
+          <label class="all-share-radio-option">
+            <input type="radio" name="all-share-location" checked> All
+          </label>
+          <label class="all-share-radio-option">
+            <input type="radio" name="all-share-location"> Gold Coast
+          </label>
+          <label class="all-share-radio-option">
+            <input type="radio" name="all-share-location"> Whitsundays
+          </label>
+          <label class="all-share-radio-option">
+            <input type="radio" name="all-share-location"> Sydney
+          </label>
+          <label class="all-share-radio-option">
+            <input type="radio" name="all-share-location"> Auckland, NZ
+          </label>
+          <label class="all-share-radio-option">
+            <input type="radio" name="all-share-location"> Successfully Existed Yachts
+          </label>
+        </div>
+      </div>
+
+      <!--  CARDS GRID  -->
+      <div class="all-share-cards-grid">
+
+        <a href="#" class="all-share-card">
+          <img src="media/e02f06924f0507974ce8e3b9ee57f470c272e3a6.png" alt="2025 Riviera 445 SUV Platinum" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">2025 Riviera 445 SUV Platinum</h3>
+              <hr class="all-share-card-rule">
+              <p class="all-share-card-price">$189,400 &ndash; 1/8 Share</p>
+            </div>
+            <div class="all-share-card-bottom">
+              
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="all-share-card">
+          <img src="media/fe9d81657400fec496e902590a59aba5bb034be9.jpg" alt="2024 Riviera 6000 Sport Yacht Platinum" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">2024 Riviera 6000 Sport Yacht Platinum</h3>
+              <hr class="all-share-card-rule">
+               <p class="all-share-card-price">Price On Application &ndash; 1/6 Share</p>
+            </div>
+            <div class="all-share-card-bottom">
+             
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="all-share-card">
+          <img src="media/a6afc149fba7dae4028f51a4c5e9694dccf8c6bc.png" alt="2024 Riviera 5400 Sport Yacht Platinum" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">2024 Riviera 5400 Sport Yacht Platinum</h3>
+              <hr class="all-share-card-rule"> <p class="all-share-card-price">$280,000 Per 1/8 Share</p>
+            </div>
+            <div class="all-share-card-bottom">
+             
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="all-share-card">
+          <img src="media/c89e573782511e6657144d4b2a6749a422520e59.png" alt="2017 Riviera 5400 Sport Yacht Platinum" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">2017 Riviera 5400 Sport Yacht Platinum</h3>
+              <hr class="all-share-card-rule"><p class="all-share-card-price">Price On Application &ndash; Share Available</p>
+            </div>
+            <div class="all-share-card-bottom">
+              
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="all-share-card">
+          <img src="media/b383e8d99faf32ef5dec70837e80ca8292b22e4b.png" alt="2018 Chris Craft Capri 27" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">2018 Chris Craft Capri 27</h3>
+              <hr class="all-share-card-rule">
+              <p class="all-share-card-price">$70,000 &ndash; 1/3 Share</p>
+            </div>
+            <div class="all-share-card-bottom">
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="all-share-card">
+          <img src="media/efe4b70b2a2a6ee59a9fcbc167f29f7a7a4d4e33.png" alt="2015 Riviera 5000 Sport Yacht S2" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">2015 Riviera 5000 Sport Yacht S2</h3>
+              <hr class="all-share-card-rule">
+              <p class="all-share-card-price">$79,900 &ndash; 1/10 Share</p>
+            </div>
+            <div class="all-share-card-bottom">
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="all-share-card">
+          <img src=" media\536e42a40eb36ed276bb7472bb29f07988e8f354.png" alt="Riviera 5000 Sport Yacht S2" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">Riviera 5000 Sport Yacht S2</h3>
+              <hr class="all-share-card-rule">
+              <p class="all-share-card-price">Price On Application &ndash; Share Available</p>
+            </div>
+            <div class="all-share-card-bottom">
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!--  SUCCESSFULLY EXISTED YACHTS SECTION  -->
+  <section class="all-share-existed-section">
+    <div class="all-share-wrapper">
+      <p class="all-share-existed-title">Successfully Existed Yachts</p>
+      <hr class="all-share-existed-rule">
+
+      <div class="all-share-existed-grid">
+
+        <a href="#" class="all-share-card">
+          <img src="media\00ecddf1e6df4d5012caa69d9f1f784f12292407.png" alt="Riviera 5000 Sport Yacht" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">Riviera 5000 Sport Yacht</h3>
+              <hr class="all-share-card-rule">
+              <p class="all-share-card-price">Price On Application &ndash; Share Available</p>
+            </div>
+            <div class="all-share-card-bottom">
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="all-share-card">
+          <img src="media\edb17fdfffcd404444468e05ca341243fdc61f5d.png" alt="Riviera 4400 Sport Yacht" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">Riviera 4400 Sport Yacht</h3>
+              <hr class="all-share-card-rule">
+              <p class="all-share-card-price">Price On Application &ndash; Share Available</p>
+            </div>
+            <div class="all-share-card-bottom">
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="all-share-card">
+          <img src="media\cb84bf6bcda433ecec5a5f917c076eedab3b7b32.png" alt="Riviera M400 Cruiser" class="all-share-card-bg">
+          <div class="all-share-card-overlay"></div>
+          <div class="all-share-card-content">
+            <div class="all-share-card-top">
+              <div class="all-share-badge-row">
+                <span class="all-share-badge">Gold Coast</span>
+                <span class="all-share-badge all-share-badge--wide">Whitsundays</span>
+              </div>
+              <h3 class="all-share-card-title">Riviera M400 Cruiser</h3>
+              <hr class="all-share-card-rule">
+              <p class="all-share-card-price">Price On Application &ndash; Share Available</p>
+            </div>
+            <div class="all-share-card-bottom">
+              <div class="all-share-card-action-row">
+                <span class="all-share-view-btn">View Details</span>
+                <img src="media/image 1.png" alt="" class="all-share-card-logo">
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+    <!-- 
+     FAQ SECTION
+ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+
+            <div class="faq-left">
+                <img class="faq-bg-img" src="media/faq-circle-lines.png" onerror="this.style.display='none'" alt=""
+                    aria-hidden="true">
+                <h2 class="faq-title">Frequently Asked<br>Questions</h2>
+            </div>
+
+            <!-- RIGHT: Accordion -->
+            <div class="faq-right">
+
+                <div class="faq-item faq-open">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="true">
+                        <p class="faq-question-text">How does yacht share ownership work?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Yacht share ownership allows you to enjoy the benefits of owning a luxury yacht without
+                                the full financial and operational burden. Instead of purchasing an entire vessel, you
+                                acquire a defined share, which gives you guaranteed access to the yacht for a set number
+                                of days or weeks each year.</p>
+                            <p>Neptune Oceanic structures each ownership group carefully, ensuring a limited number of
+                                owners per yacht. This means availability is reliable, scheduling is fair, and the yacht
+                                is never overused. Usage is managed through a transparent booking system that balances
+                                peak and off peak periods across all owners.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                        <p class="faq-question-text">How is booking time managed between owners?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Booking time is managed through our proprietary online scheduling platform. Each owner
+                                receives a fair allocation of peak and off-peak periods across the year, ensuring no
+                                single owner dominates prime dates. Advance booking windows, waitlists, and swap options
+                                are all available through your owner portal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                        <p class="faq-question-text">What costs are included in ownership?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Your annual ownership fee covers maintenance, insurance, berthing, cleaning, and routine
+                                servicing. We handle all the operational complexity so you simply arrive and enjoy. Any
+                                extraordinary repairs are shared equitably among the ownership group and communicated
+                                transparently.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                        <p class="faq-question-text">Where are the yachts located?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Neptune Oceanic yachts are currently based in the Whitsundays, Queensland — one of
+                                Australia's premier sailing destinations. We are expanding to additional locations and
+                                marina options. Contact us for the latest availability by region.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                        <p class="faq-question-text">Do I need boating experience to join?</p>
+                        <button class="faq-toggle" aria-label="Toggle answer">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>No prior boating experience is required. We offer fully crewed options for those who
+                                prefer a hands-off experience, as well as bareboat access for licensed skippers. Our
+                                team can also connect you with accredited training courses if you wish to develop your
+                                skills as part of the ownership experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            var items = document.querySelectorAll('.faq-item');
+
+            items.forEach(function (item) {
+                var trigger = item.querySelector('.faq-question');
+
+                function toggle() {
+                    var isOpen = item.classList.contains('faq-open');
+                    // Close all
+                    items.forEach(function (i) {
+                        i.classList.remove('faq-open');
+                        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    });
+                    if (!isOpen) {
+                        item.classList.add('faq-open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    }
+                }
+
+                trigger.addEventListener('click', toggle);
+                trigger.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+                });
+            });
+        })();
+    </script>
+
+
+
+
+
+
+
+
+
+    <!-- 
+     HPS — BOAT SLIDER SECTION 
+ -->
+    <section class="hps-section">
+
+        <button class="hps-btn-prev" id="hpsBtnPrev" aria-label="Previous">
+            <svg viewBox="0 0 24 24">
+                <polyline points="15 18 9 12 15 6" />
+            </svg>
+        </button>
+
+        <div class="swiper hps-swiper" id="hpsSwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="media/e3cfd4e134195ce6836f3749670f0a1f9737dccc.png" alt="Yacht 1">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="media/bc3b174269e231b567f57bf7ea2ee6c7be364565.png" alt="Yacht 2">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="media/0f3958e2717ff610d3d147cc31f26a1b094c4391.png" alt="Yacht 3">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=1400&q=85" alt="Yacht 4">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1400&q=85" alt="Yacht 5">
+                </div>
+
+            </div>
+        </div>
+
+        <button class="hps-btn-next" id="hpsBtnNext" aria-label="Next">
+            <svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+            </svg>
+        </button>
+
+    </section>
+
+    <div class="main-hpm-section">
+
+        <section class="hpm-section">
+            <div class="hpm-track" id="hpmTrack">
+
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+                <div class="hpm-chunk">
+                    <a class="hpm-contact" href="#">Contact<br>Us</a>
+                    <span class="hpm-text">Start Your Yacht Share Journey</span>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!--  END HOMEPAGE SLIDER   MARQUEE  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        (function () {
+
+            var hpsSwiper = new Swiper('#hpsSwiper', {
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                spaceBetween: 20,
+                grabCursor: true,
+                loop: true,
+                speed: 600,
+                navigation: {
+                    prevEl: '#hpsBtnPrev',
+                    nextEl: '#hpsBtnNext',
+                },
+                breakpoints: {
+                    0: {
+                        spaceBetween: 12,
+                    },
+                    640: {
+                        spaceBetween: 18,
+                    },
+                    1024: {
+                        spaceBetween: 24,
+                    }
+                }
+            });
+
+        })();
+    </script>
+
+
+
+
+
+
+</body>
+</html>
